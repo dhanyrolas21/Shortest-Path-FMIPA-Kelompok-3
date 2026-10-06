@@ -8,11 +8,31 @@ Aplikasi ini dirancang menggunakan **Algoritma Dijkstra** untuk menghitung jarak
 
 ## 📌 Fitur Utama
 
-- **Navigasi Presisi Pedestrian:** Jalur rute dipaksa mengikuti persimpangan (*junction waypoints*) dan koridor pedestrian (seperti koridor utama Gedung Prof. Dr. Syawal Gultom, M.Pd.).
-- **Perhitungan Rute Terpendek:** Mengimplementasikan **Algoritma Dijkstra** untuk mencari jarak paling optimal berdasarkan koordinat latitude & longitude geografis nyata.
-- **Peta Interaktif:** Menggunakan pustaka Leaflet.js dengan tampilan peta satelit presisi tinggi.
-- **Dropdown Asal & Tujuan:** Pengguna dapat dengan mudah memilih titik keberangkatan dan tujuan dari 13 gedung utama FMIPA.
-- **Visualisasi Graf Real-Time:** Menampilkan jalur rute berbentuk garis polyline merah beserta penanda posisi awal dan akhir.
+- **Navigasi Presisi Pedestrian:** Jalur rute dipaksa mengikuti persimpangan (*junction waypoints*) dan koridor pedestrian nyata.
+- **Perhitungan Rute Terpendek (Dijkstra):** Menggunakan algoritma Dijkstra teroptimasi dengan bobot Euclidean/Haversine murni dalam satuan meter.
+- **Peta Interaktif & Switcher Layer:** Pilihan tampilan peta Satelit Google dan OpenStreetMap Street View menggunakan pustaka Leaflet.js.
+- **Populasi Dropdown Dinamis:** Pilihan gedung asal dan tujuan diisi secara otomatis dari `routes.json` dengan menyaring hanya node bertipe `building`.
+- **Fitur GPS Geolocation (🎯 Lokasi Saya):** Mendeteksi koordinat GPS pengguna secara *real-time* dan memilih gedung FMIPA terdekat sebagai titik keberangkatan.
+- **Fitur Bagikan Link Rute (🔗 Shareable Link):** Menyalin tautan rute dinamis (URL Parameter) sehingga rute navigasi dapat dibuka dan dimuat secara otomatis oleh pengguna lain.
+- **Visualisasi Garis Rute Berpendar (Glow Polyline):** Visualisasi rute dengan efek garis berpendar (*glowing line*) serta penanda posisi *START* (hijau) dan *FINISH* (merah).
+- **Marker & Popup Interaktif:** Klik marker gedung mana saja di peta untuk memilihnya langsung sebagai titik asal atau tujuan.
+- **Petunjuk Arah Jalan Kaki:** Panel instruksi navigasi *step-by-step* dari titik awal hingga lokasi tujuan beserta estimasi waktu tempuh (kecepatan rata-rata 1.3 m/s).
+- **Mode Debug Graf (?debug=1):** Fitur inspeksi geometri graf untuk memeriksa *edge* berpotongan, *near-misses*, atau jarak persimpangan yang terlalu panjang secara visual.
+
+---
+
+## 🏗️ Arsitektur Kode Modular
+
+Proyek ini menggunakan prinsip pemisahan tanggung jawab (*Separation of Concerns*) secara ketat agar logika algoritma dan UI terisolasi dengan rapi:
+
+```text
+├── index.html       # Antarmuka dasar HTML & kontainer peta
+├── style.css        # Tata letak UI/UX modern (Dark Slate Theme)
+├── routes.json      # Database node (gedung & simpang) + adjacency list
+├── algorithm.js     # Logika graf murni, Haversine, Min-Heap, & Dijkstra
+├── app.js           # Pengendali utama Leaflet & eksekusi pencarian rute
+├── ui.js            # Interaktivitas UI (GPS, Share Link, Popup, & Steps)
+└── debug.js         # Mode verifikasi graf geospatial (opsional via ?debug=1)
 
 ---
 
