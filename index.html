@@ -4,75 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Navigasi Kampus FMIPA UNIMED</title>
-
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="layout-wrapper">
-    <!-- Sidebar Kiri -->
     <aside class="sidebar">
-      <h2>Navigasi FMIPA</h2>
-      <p class="subtitle">Cari jalur antar gedung di kawasan FMIPA</p>
-
-      <div class="form-group">
-       <label for="startNode">Lokasi Awal (Gedung):</label>
-<select id="startNode">
-  <option value="matematika">Gedung Matematika</option>
-  <option value="biologi">Gedung Biologi</option>
-  <option value="fisika">Gedung Fisika</option>
-  <option value="kimia">Gedung Kimia</option>
-  <option value="gedung_ilkom">Gedung Ilkom</option>
-  <option value="lab_biologi">Lab Biologi</option>
-  <option value="lab_kimia">Lab Kimia</option>
-  <option value="lab_fisika">Lab Fisika</option>
-  <option value="gedung_12">Gedung 12</option>
-  <option value="bilingual">Gedung Bilingual</option>
-  <option value="gedung_syawal">Gedung Syawal</option>
-  <option value="kantin_kokma">Kantin Kokma</option>
-  <option value="tanaman_biologi">Tanaman Biologi</option>
-</select>
-
-<label for="targetNode">Tujuan (Gedung):</label>
-<select id="targetNode">
-  <option value="matematika">Gedung Matematika</option>
-  <option value="biologi" selected>Gedung Biologi</option>
-  <option value="fisika">Gedung Fisika</option>
-  <option value="kimia">Gedung Kimia</option>
-  <option value="gedung_ilkom">Gedung Ilkom</option>
-  <option value="lab_biologi">Lab Biologi</option>
-  <option value="lab_kimia">Lab Kimia</option>
-  <option value="lab_fisika">Lab Fisika</option>
-  <option value="gedung_12">Gedung 12</option>
-  <option value="bilingual">Gedung Bilingual</option>
-  <option value="gedung_syawal">Gedung Syawal</option>
-  <option value="kantin_kokma">Kantin Kokma</option>
-  <option value="tanaman_biologi">Tanaman Biologi</option>
-</select>
+      <div class="brand">
+        <span class="brand-logo">🗺️</span>
+        <div>
+          <h2>Navigasi FMIPA</h2>
+          <p class="subtitle">Sistem Rute Terpendek UNIMED</p>
+        </div>
       </div>
 
-      <button id="btnSearch" class="btn-search" onclick="findRoute()">Cari Rute</button>
+      <div class="card-input">
+        <div class="form-group">
+          <div class="label-with-btn">
+            <label for="startNode">📍 Lokasi Awal</label>
+            <button type="button" class="btn-gps" onclick="useCurrentLocation()" title="Cari Gedung Terdekat">🎯 Lokasi Saya</button>
+          </div>
+          <select id="startNode"></select>
+        </div>
+
+        <button type="button" id="btnSwap" class="btn-swap-round" title="Tukar Lokasi">
+          ⇅ Tukar Arah
+        </button>
+
+        <div class="form-group">
+          <label for="targetNode">🎯 Tujuan</label>
+          <select id="targetNode"></select>
+        </div>
+
+        <button id="btnSearch" class="btn-search-primary" onclick="findRoute()">🔍 Cari Rute Tercepat</button>
+      </div>
 
       <!-- Panel Info Hasil -->
       <div id="stats" class="stats-panel" style="display: none;">
-        <h3>Detail Rute</h3>
-        <p><strong>Asal & Tujuan:</strong> <br><span id="routeName">-</span></p>
-        <p><strong>Total Jarak:</strong> <span id="totalDistance">0 km</span></p>
+        <div class="route-header">
+          <span class="badge-tag">Dijkstra Path</span>
+          <h3 id="routeName">-</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <span class="info-label">📏 Total Jarak & Waktu</span>
+            <span id="totalDistance" class="info-val">0 m</span>
+          </div>
+        </div>
+
+        <div class="steps-wrapper">
+          <h4>Petunjuk Arah Jalan Kaki</h4>
+          <div id="stepsList" class="steps-list"></div>
+        </div>
+
+        <button type="button" class="btn-share" onclick="copyShareableLink()">🔗 Bagikan Link Rute Ini</button>
       </div>
     </aside>
 
-    <!-- Peta Kanan -->
     <main id="map"></main>
   </div>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Custom JS -->
+  <script src="algorithm.js"></script>
+  <script src="debug.js"></script>
   <script src="app.js"></script>
+  <script src="ui.js"></script>
 </body>
-</html> 
+</html>
