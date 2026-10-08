@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Kampus FMIPA UNIMED</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="layout-wrapper">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-logo">🗺️</span>
+        <div>
+          <h2>Navigasi FMIPA</h2>
+          <p class="subtitle">Sistem Rute Terpendek UNIMED</p>
+        </div>
+      </div>
+
+      <div class="card-input">
+        <div class="form-group">
+          <div class="label-with-btn">
+            <label for="startNode">📍 Titik Berangkat</label>
+            <button type="button" class="btn-gps" onclick="useCurrentLocation()" title="Cari Gedung Terdekat">🎯 Lokasi Saya</button>
+          </div>
+          <select id="startNode"></select>
+        </div>
+
+        <button type="button" id="btnSwap" class="btn-swap-round" title="Tukar Lokasi">
+          ⇅ Tukar Arah
+        </button>
+
+        <div class="form-group">
+          <label for="targetNode">🏢 Gedung Tujuan</label>
+          <select id="targetNode"></select>
+        </div>
+
+        <!-- Hanya muncul jika gedung punya data ruangan -->
+        <div id="destDetail" class="dest-detail hidden">
+          <div class="form-group">
+            <label for="targetFloor">🪜 Lantai</label>
+            <select id="targetFloor"></select>
+          </div>
+          <div class="form-group">
+            <label for="targetRoom">🚪 Ruangan</label>
+            <select id="targetRoom" disabled></select>
+          </div>
+        </div>
+
+        <!-- Hanya muncul jika gedung belum punya data ruangan -->
+        <div id="noRoomMsg" class="dest-note hidden">Data ruangan untuk gedung ini belum tersedia.</div>
+
+        <!-- Kartu informasi tujuan (hanya berisi data yang tersedia) -->
+        <div id="destInfo" class="dest-info hidden"></div>
+
+        <div id="formMsg" class="form-msg" role="alert"></div>
+
+        <button id="btnSearch" class="btn-search-primary" onclick="findRoute()">🔍 Cari Rute Tercepat</button>
+      </div>
+
+      <!-- Panel Info Hasil -->
+      <div id="stats" class="stats-panel" style="display: none;">
+        <div class="route-header">
+          <span class="badge-tag">Dijkstra Path</span>
+          <h3 id="routeName">-</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <span class="info-label">📏 Total Jarak & Waktu</span>
+            <span id="totalDistance" class="info-val">0 m</span>
+          </div>
+        </div>
+
+        <div class="steps-wrapper">
+          <h4>Petunjuk Arah Jalan Kaki</h4>
+          <div id="stepsList" class="steps-list"></div>
+        </div>
+
+        <button type="button" class="btn-share" onclick="copyShareableLink()">🔗 Bagikan Link Rute Ini</button>
+      </div>
+    </aside>
+
+    <main id="map"></main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="algorithm.js"></script>
+  <script src="buildings.js"></script>
+  <script src="debug.js"></script>
+  <script src="app.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
