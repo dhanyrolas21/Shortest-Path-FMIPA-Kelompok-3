@@ -19,7 +19,42 @@
 const BUILDING_DATA = [
   {
     nodeId: 'gedung_syawal', code: '001', name: 'Gedung Syawal',
-    floors: {}
+    floors: {
+      1: `
+001.1    | Hall/Lobby Utama 
+001.1.10 | Gudang
+001.1.11 | Ruang Pelayanan BMN
+001.1.07 | Gudang Inventaris 
+001.1.04 | Toilet Disabilitas 
+001.1.05 | Toilet Wanita
+001.1.03 | Pantry
+          | Ruang Arsip`,
+      2: `
+001.2    | Hall
+001.2.02 | Ruang Panel 
+001.2.03 | Pantry 
+001.2.04 | Toilet Disabilitas 
+001.2.05 | Toilet Wanita
+001.2.06 | Toilet Pria
+001.2.12 | Ruang Guru Besar
+001.2.08 | Musholah 
+001.2.09 | Ruang Wudhu Pria
+001.2.10 | Ruang Wudhu Wanita`,
+      3: `
+         | Aula C
+         | Aula B
+001.3.10 | Toilet Wanita
+001.3.12 | Gudang
+001.3.13 | Aula D
+001.3.01 | Aula A
+001.3.   | Hall
+001.3.   | Tangga Timur 
+001.3.03 | Panel
+001.3.04 | Pantry 
+001.3.05 | Toilet Disabilitas 
+001.3.07 | Toilet Pria 
+001.3.14 | Balkon`
+    }
   },
 
   {
@@ -370,7 +405,117 @@ const BUILDING_DATA = [
   // Gedung Biologi (005): data ruangan BELUM ada. Isi `floors` di sini nanti.
   {
     nodeId: 'biologi', code: '005', name: 'Gedung Biologi',
-    floors: {}
+    floors: {
+      1: `
+005.1.01 | Ruang Administrasi Jurusan 
+005.1.02 | Ruang Tunggu 
+005.1.02.1 | Ruang sekretaris jurusan 
+005.1.02.2 | Ruang ketua jurusan 
+005.1.02.3 | Ruang rapat fungsionaris 
+005.1.03 | Toilet Wanita 
+005.1.04 | Toilet Pria 
+005.1.05 | Toilet Dosen A 
+005.1.06 | Toilet Dosen B 
+005.1.07 | Panel 
+005.1.08 | Pantry 
+005.1.09 | Ruang Control 
+005.1.10 | Ruang Kaprodi Pendidikan Biologi 
+005.1.11 | Ruang Kaprodi Pendidikan Ipa 
+005.1.12 | Ruang Kaprodi Biologi 
+005.1.13 | Tangga Darurat 
+005.1.14 | Lift Mahasiswa 
+005.1.15 | Lift Dosen `,
+      2: `
+005.2.01 | Ruang Penguji A 
+005.2.02 | Ruang Mikroteaching A 
+005.2.03 | Ruang Mikroteaching B 
+005.2.04 | Ruang Penguji B 
+005.2.05 | Ruang Penguji C 
+005.2.06 | Mikroteaching C 
+005.2.07 | Ruang Kaprodi S2 Pendidikan Biologi 
+005.2.08 | Ruang Baca 
+005.2.09 | Toilet Wanita 
+005.2.10 | Toilet Pria 
+005.2.11 | Mushola 
+005.2.12 | Tempat Wudhu 
+005.2.14 | Ruang Rapat Jurusan 
+005.2.15 | Ruang Penguji D 
+005.2.16 | Ruang Mikroteaching D 
+005.2.17 | Tangga Darurat 
+005.2.18 | Lift Mahasiswa 
+005.2.19 | List Dosen`,
+      3: `
+005.3.01 | Ruang Kelas 
+005.3.02 | Ruang Kelas 
+005.3.03 | Toilet Cewek 
+005.3.04 | Toilet Cowok 
+005.3.05 | Gudang 
+005.3.07 | Toilet Difabel 
+005.3.08 | Ruang Kelas 
+005.3.09 | Tangga Darurat 
+005.3.10 | Lift Mahasiswa 
+005.3.11 | Lift Dosen`,
+      4: `
+005.4.01 | Ruang Kelas 
+005.4.02 | Ruang Kelas 
+005.4.03 | Toilet Cewek 
+005.4.04 | Toilet Cowok 
+005.4.05 | Mushola 
+005.4.06 | Tempat Wudhu
+005.4.07 | Ruang Kelas 
+005.4.08 | Tangga Darurat 
+005.4.09 | Lift Mahasiswa 
+005.4.10 | Lift Dosen`,
+      5: `
+005.5.01 | Ruang Kelas 
+005.5.02 | Ruang Kelas 
+005.5.03 | Toilet Wanita 
+005.5.04 | Toilet Pria 
+005.5.05 | Gudang 
+005.5.08 | Ruang Kelas 
+005.5.09 | Tangga 
+005.5.10 | Lift Mahasiswa 
+005.5.11 | Lift Dosen`,
+      6: `
+005.6.01 | Ruang Kelas 
+005.6.02 | Ruang Kelas 
+005.6.03 | Toilet Wanita 
+005.6.04 | Toilet Pria 
+005.6.06 | Mushola 
+005.6.07 | Ruang Kelas 
+005.6.08 | Tangga 
+005.6.09 | Lift Mahasiswa 
+005.6.10 | Lift Dosen`,
+      7: `
+005.7.01 | Ruang Kelas 
+005.7.02 | Ruang Kelas 
+005.7.03 | Toilet Wanita 
+005.7.04 | Toilet Pria 
+005.7.05 | Gudang 
+005.7.07 | Ruang Kelas 
+005.7.08 | Tangga 
+005.7.09 | Lift Mahasiswa 
+005.7.10 | Lift Dosen`,
+      8: `
+005.8.01 | Ruang Diskusi 
+005.8.02 | Ruang Dosen 
+005.8.03 | Tangga
+005.8.04 | Lift Mahasiswa 
+005.8.05 | Lift Dosen`,
+      9: `
+005.9.01 | Ruang Diskusi 9.1
+005.9.02 | Ruang Dosen
+005.9.03 | Tangga 
+005.9.04 | Lift Mahasiswa 
+005.9.05 | Lift Dosen`,
+      10: `
+005.10.01 | Ruang Komunitas Mahasiswa 
+005.10.02 | Ruang Pre Function 
+005.10.03 | Ruang Serbaguna 
+005.10.04 | Tangga 
+005.10.05 | Lift Mahasiswa 
+005.10.06 | Lift Dosen`
+    }
   },
 
   {
