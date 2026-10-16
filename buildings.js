@@ -503,7 +503,7 @@ const BUILDING_DATA = [
 005.8.04 | Lift Mahasiswa 
 005.8.05 | Lift Dosen`,
       9: `
-005.9.01 | Ruang Diskusi 9.1
+005.9.01 | Ruang Diskusi
 005.9.02 | Ruang Dosen
 005.9.03 | Tangga 
 005.9.04 | Lift Mahasiswa 
