@@ -242,7 +242,7 @@ function tryAutoRoute() {
   if (validateInputs() && typeof findRoute === 'function') findRoute();
 }
 
-// 3. Render Custom Pin & Popup Gedung
+// 3. Render Custom Pin & Popup Gedung (Auto-fit tanpa terpotong)
 function renderBuildingMarkers() {
   buildingMarkersGroup.clearLayers();
 
@@ -253,8 +253,8 @@ function renderBuildingMarkers() {
         icon: L.divIcon({
           className: 'custom-building-pin',
           html: `<div class="pin-badge">🏢 <span>${esc(node.name)}</span></div>`,
-          iconSize: [120, 30],
-          iconAnchor: [60, 15]
+          iconSize: null,     // Biarkan CSS menentukan ukuran dinamis
+          iconAnchor: [0, 0]  // Posisinya disesuaikan oleh transform CSS
         })
       });
 
